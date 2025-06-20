@@ -9,8 +9,7 @@ CRUDY es un juego narrativo y de decisiones desarrollado por CtrlAltSupr. En él
 ## Tecnologías utilizadas
 - JavaScript (ES6+)
 - HTML5 & CSS3
-- [Tailwind CSS](https://tailwindcss.com/) (opcional)
-- Bootstrap o Bulma (alternativa)
+- Bulma (Librería CSS)
 - Git & GitHub
 - Azure DevOps (Board, tareas y seguimiento)
 
