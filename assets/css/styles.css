@@ -1,0 +1,22 @@
+#intro {
+  background-image: url('../img/intro.gif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#game-audio {
+    display: none;
+}
+
+#mute, #unmute {
+  cursor: pointer;
+}
+
+#mute:hover, #unmute:hover {
+  color: #f00;
+}
+
+#unmute {
+  display: none;
+}
