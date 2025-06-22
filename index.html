@@ -15,7 +15,27 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <main>
+    <main class="main">
+      <div>
+        <button class="btnInstructions js-modal-trigger" data-target="instructions">
+</button>
+        <div id="instructions" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <h1>Instrucciones</h1>
+              <p>
+                <strong>Crudy Game</strong> es un juego de plataformas 2D.
+                <br>
+                <br>
+                <strong>Objetivo:</strong>
+              </p>
+              <button id="continue" class="button is-primary">Continuar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="white-mask"></div>
       <section id="intro" class="hero is-fullheight">
         <div class="container is-fluid">
           <div class="navbar-end pt-4">
@@ -29,10 +49,16 @@
           <audio
             id="theme-audio"
             src="./assets/audio/theme.mp3"
-            autoplay
             loop
           ></audio>
         </div>
+        <div class="container is-fluid is-flex is-flex-direction-column is-align-items-center mt-6">
+          <button id="start-game" class="button is-large">Iniciar</button>
+          <audio id="start-game-audio" src="./assets/audio/start.mp3"></audio>
+        </div>
+      </section>
+      <section id="game" class="hero is-fullheight">
+        <h1>Game</h1>
       </section>
     </main>
     <script type="module" src="./scripts/app.js"></script>
