@@ -1,4 +1,6 @@
 import './bulma.js';
+import { init as initProtocol } from './protocol.js';
+import { playerStatus } from './playerStatus.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
@@ -15,11 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const startGameAudio = document.getElementById('start-game-audio');
   const mask = document.querySelector('.white-mask');
 
-  // Game Section
-  const game = document.getElementById('game');
-
   /* Variables */
   let audioStarted = false;
+
+  // PJ Stats
+  const player = {
+    health: ['❤️', '❤️', '❤️', '❤️', '❤️'],
+    backpack: [],
+    mentalState: playerStatus.CONFUNDIDO
+  }
 
   /* Init */
   init();
@@ -31,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startAudio() {
     if (!audioStarted) {
-      themeAudio.volume = 0.1;
+      themeAudio.volume = 0.25;
       themeAudio.play()
         .then(() => {
           console.log('Audio de juego iniciado correctamente.');
@@ -58,16 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Event listeners */
   mute.addEventListener('click', () => muteAudio());
   unmute.addEventListener('click', () => unmuteAudio());
+  
   continueButton.addEventListener('click', () => {
     instructions.classList.remove('is-active');
     startAudio();
   });
+
   startGame.addEventListener('click', () => {
     themeAudio.pause();
     startGameAudio.volume = 0.5;
     startGameAudio.play();
     intro.style.display = 'none';
     mask.style.display = 'none';
-    game.style.display = 'block';
+    initProtocol(player);
   });
 });

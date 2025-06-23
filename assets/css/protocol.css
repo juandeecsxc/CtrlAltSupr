@@ -1,0 +1,71 @@
+#protocol {
+  background-image: url("../img/protocol.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#protocol-audio,
+#alarm-audio,
+#player-stats {
+  display: none;
+}
+
+.screen {
+  position: absolute;
+  width: 250px;
+  height: 135px;
+  border-radius: 10px;
+}
+
+#error-screen-1 {
+  bottom: 180px;
+  left: 15px;
+}
+
+#error-screen-3 {
+  bottom: 170px;
+  left: 620px;
+}
+
+#error-screen-4 {
+  bottom: 170px;
+  left: 890px;
+}
+
+#error-screen-5 {
+  bottom: 170px;
+  right: 450px;
+}
+
+.box-info {
+  background: linear-gradient(to bottom, #1a1a1a, #0d2a2a);
+  max-width: 600px;
+  margin-bottom: 100px !important;
+  color: #E0FFE0;
+  box-shadow: 0px 0px 20px 0px #516161;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-info h2 {
+  color: #E0FFE0;
+}
+
+.box-options {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #2f2f2f66;
+}

@@ -13,10 +13,11 @@
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/protocol.css" />
   </head>
   <body>
     <main class="main">
-      <div>
+      <div class="instructions-box">
         <button class="btnInstructions js-modal-trigger" data-target="instructions">
 </button>
         <div id="instructions" class="modal">
@@ -35,31 +36,88 @@
           </div>
         </div>
       </div>
+      <div class="audio-sources">
+        <audio id="theme-audio" src="./assets/audio/theme.mp3" loop></audio>
+        <audio id="start-game-audio" src="./assets/audio/start.mp3"></audio>
+        <audio id="protocol-audio" src="./assets/audio/protocol.mp3" loop></audio>
+        <audio id="alarm-audio" src="./assets/audio/alarm.mp3" loop></audio>
+        <audio id="pain-audio" src="./assets/audio/pain.mp3"></audio>
+      </div>
       <div class="white-mask"></div>
-      <section id="intro" class="hero is-fullheight">
-        <div class="container is-fluid">
-          <div class="navbar-end pt-4">
-            <span id="unmute" class="icon">
-              <i class="fa-solid fa-volume-high"></i>
-            </span>
-            <span id="mute" class="icon">
-              <i class="fa-solid fa-volume-xmark"></i>
-            </span>
+      <div class="message-box notification is-danger is-light"></div>
+      <div class="playground">
+        <section id="intro" class="hero is-fullheight">
+          <div class="container is-fluid">
+            <div class="navbar-end pt-4">
+              <span id="unmute" class="icon">
+                <i class="fa-solid fa-volume-high"></i>
+              </span>
+              <span id="mute" class="icon">
+                <i class="fa-solid fa-volume-xmark"></i>
+              </span>
+            </div>
           </div>
-          <audio
-            id="theme-audio"
-            src="./assets/audio/theme.mp3"
-            loop
-          ></audio>
-        </div>
-        <div class="container is-fluid is-flex is-flex-direction-column is-align-items-center mt-6">
-          <button id="start-game" class="button is-large">Iniciar</button>
-          <audio id="start-game-audio" src="./assets/audio/start.mp3"></audio>
-        </div>
-      </section>
-      <section id="game" class="hero is-fullheight">
-        <h1>Game</h1>
-      </section>
+          <div class="container is-fluid is-flex is-flex-direction-column is-align-items-center mt-6">
+            <button id="start-game" class="button is-danger is-dark is-outlined is-hovered">Iniciar</button>
+          </div>
+        </section>
+        <section id="protocol" class="hero is-fullheight slow-fade-in">
+          <div class="environment">
+            <img id="error-screen-1" class="screen" src="./assets/img/p_5.gif" alt="error_screen_1">
+            <img id="error-screen-3" class="screen" src="./assets/img/p_5.gif" alt="error_screen_3">
+            <img id="error-screen-4" class="screen" src="./assets/img/p_2.gif" alt="error_screen_4">
+            <img id="error-screen-5" class="screen" src="./assets/img/p_5.gif" alt="error_screen_5">
+          </div>
+          <div class="container is-fluid pl-3 pt-3">
+            <div class="columns">
+              <div class="column is-four-fifths">
+                <h2 class="title is-5 mb-2">Inicio del Protocolo - La Bienvenida de la Corrupción</h2>
+                <h3 class="title is-6">
+                  <span class="is-block"><strong>Sala:</strong> A-101</span>
+                  <span class="is-block"><strong>Fecha:</strong> 22/06/2025</span>
+                  <span class="is-block"><strong>Hora:</strong> 10:00 AM</span>
+                </h3>
+              </div>
+              <div id="player-stats" class="column fast-fade-in">
+                <div class="notification is-warning is-light">
+                  <h4 class="title is-4 mb-2">Estadísticas generales</h4>
+                  <hr class="my-1">
+                  <p id="health-stats" class="mb-2">
+                    <strong>❤️ Vida:</strong> <span></span>
+                  </p>
+                  <p id="inventory-stats" class="mb-2">
+                    <strong>🎒 Inventario (0/10):</strong> <span></span>
+                  </p>
+                  <p id="mental-state-stats" class="mb-2">
+                    <strong>😶‍🌫️ Estado mental:</strong> <span></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container is-fluid hero is-halfheight is-flex is-flex-direction-column is-align-items-center is-justify-content-end">
+            <div class="box box-info">
+              <p class="typewriter-text"></p>
+              <button id="protocol-continue" class="button is-primary mt-4 fast-fade-in">Continuar</button>
+            </div>
+          </div>
+          <div class="box box-options">
+            <div class="container is-fluid">
+              <div class="columns">
+                <div class="column has-text-centered">
+                  <button id="optNucleo" class="button is-large is-fullwidth">IR AL NÚCLEO LÓGICO</button>
+                </div>
+                <div class="column has-text-centered">
+                  <button id="optEspacio" class="button is-large is-fullwidth">IR AL ESPACIO SECRETO</button>
+                </div>
+                <div class="column has-text-centered">
+                  <button id="optSimulado" class="button is-large is-fullwidth">IR AL ENTORNO SIMULADO</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
     <script type="module" src="./scripts/app.js"></script>
   </body>
