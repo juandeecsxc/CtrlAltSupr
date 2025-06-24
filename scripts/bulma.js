@@ -1,16 +1,16 @@
+export function openModal($el) {
+  $el.classList.add('is-active');
+}
+
+export function closeModal($el) {
+  $el.classList.remove('is-active');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const modals = document.querySelectorAll('.modal') || [];
   const triggers = document.querySelectorAll('.js-modal-trigger') || [];
   const closeTargets = document.querySelectorAll('.modal-close, .modal-card-head .delete, .modal-card-foot .button') || [];
   
-  function openModal($el) {
-    $el.classList.add('is-active');
-  }
-
-  function closeModal($el) {
-    $el.classList.remove('is-active');
-  }
-
   function closeAllModals() {
     modals.forEach(($modal) => {
       closeModal($modal);
@@ -34,12 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
     $close.addEventListener('click', () => {
       closeModal($target);
     });
-  });
-
-  // Add a keyboard event to close all modals
-  document.addEventListener('keydown', (event) => {
-    if(event.key === "Escape") {
-      closeAllModals();
-    }
   });
 });

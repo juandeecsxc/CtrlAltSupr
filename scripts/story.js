@@ -7,8 +7,8 @@ const protocolStep3 = "Estás atrapado en su simulación. CRUDY, la inteligencia
 const protocolStep4 = "OPERADOR. HAS INGRESADO AL NÚCLEO FRAGMENTADO Y LAS ALARMAS SE HAN ACTIVADO. PARECE QUE CRUDY TE HA ESCUCHADO. TIENES TRES RUTAS QUE SE PRESENTAN ANTE TI. ELIGE RÁPIDO, CRUDY SE APROXIMA. SOLO UNO TE PERMITIRÁ AVANZAR Y TEN CUIDADO, UNA DE ELLAS ACTIVA UNA FALLA CATASTRÓFICA.";
 
 export const protocolStory = [
-  // protocolStep1,
-  // protocolStep2,
-  // protocolStep3,
+  protocolStep1,
+  protocolStep2,
+  protocolStep3,
   protocolStep4,
 ];

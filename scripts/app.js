@@ -1,6 +1,6 @@
 import './bulma.js';
 import { init as initProtocol } from './protocol.js';
-import { playerStatus } from './playerStatus.js';
+import { playerStatus } from './player.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const player = {
     health: ['❤️', '❤️', '❤️', '❤️', '❤️'],
     backpack: [],
-    mentalState: playerStatus.CONFUNDIDO
+    mentalState: playerStatus.CONFUSED
   }
 
   /* Init */
@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
     themeAudio.pause();
     startGameAudio.volume = 0.5;
     startGameAudio.play();
-    intro.style.display = 'none';
-    mask.style.display = 'none';
+    intro.classList.add('is-hidden');
+    mask.classList.add('is-hidden');
     initProtocol(player);
   });
 });

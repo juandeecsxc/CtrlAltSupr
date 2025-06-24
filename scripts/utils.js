@@ -1,10 +1,24 @@
-export function startTyping(textToType, elementText, typingSpeed = 50) {
+export function startTyping(textToType, elementText, button = null, typingSpeed = 50) {
+  const keyboardAudio = document.getElementById('keyboard-audio');
+  keyboardAudio.volume = 0.2;
   let charIndex = 0;
 
   function typeWriter() {
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        keyboardAudio.pause();
+        charIndex = textToType.length;
+        elementText.textContent = textToType;
+        if (button) {
+          button.style.display = 'block';
+        }
+      }
+    });
+
     if (charIndex < textToType.length) {
       elementText.textContent += textToType.charAt(charIndex);
       charIndex++;
+      keyboardAudio.play();
       setTimeout(typeWriter, typingSpeed);
     }
   }
@@ -21,7 +35,11 @@ export function updatePlayerStats(player) {
 
   healthStats.querySelector('span').textContent = player.health.join('');
   if (player.backpack.length > 0) {
+    inventoryStats.querySelector('strong').textContent = `🎒 Inventario (${player.backpack.length}/10):`;
     inventoryStats.querySelector('span').textContent = player.backpack.toString();
+  } else {
+    inventoryStats.querySelector('strong').textContent = '🎒 Inventario (0/10):';
+    inventoryStats.querySelector('span').textContent = '';
   }
 
   mentalStateStats.querySelector('span').textContent = player.mentalState;
@@ -45,9 +63,18 @@ export function playerDamage(player, damage) {
   return player;
 }
 
-export function showMessage(message) {
+export function showMessage(message, time = 7000) {
   const messageBox = document.querySelector('.message-box');
-  messageBox.textContent = message;
-  messageBox.style.display = 'block';
-  setTimeout(() => messageBox.style.display = 'none', 3000);
+  if (!messageBox.style.display || messageBox.style.display === 'none') {
+    const messageHTML = message.replace(/\n/g, '<br>');
+    messageBox.querySelector('p').innerHTML = messageHTML;
+    messageBox.style.display = 'block';
+    setTimeout(() => messageBox.style.display = 'none', time);
+  }
+}
+
+export function randomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
