@@ -1,3 +1,5 @@
+import { playerStatus } from './player.js';
+
 export function startTyping(textToType, elementText, button = null, typingSpeed = 50) {
   const keyboardAudio = document.getElementById('keyboard-audio');
   keyboardAudio.volume = 0.2;
@@ -57,7 +59,7 @@ export function playerDamage(player, damage) {
   }
 
   if (player.health.length === 1) {
-    player.mentalState = playerStatus.MURIENDO;
+    player.mentalState = playerStatus.DYING;
   }
   painAudio.play();
   return player;
