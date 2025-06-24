@@ -19,29 +19,38 @@
 
 .screen {
   position: absolute;
-  width: 250px;
-  height: 135px;
+  width: 13%;
+  height: 15%;
   border-radius: 10px;
 }
 
 #error-screen-1 {
-  bottom: 180px;
-  left: 15px;
+  /* bottom: 180px;
+  left: 15px; */
+
+  bottom: 15%;
+  left: 1%;
 }
 
 #error-screen-3 {
-  bottom: 170px;
-  left: 620px;
+  /* bottom: 170px;
+  left: 620px; */
+  bottom: 15%;
+  left: 32%;
 }
 
 #error-screen-4 {
-  bottom: 170px;
-  left: 890px;
+  /* bottom: 170px;
+  left: 890px; */
+  bottom: 15%;
+  left: 48%;
 }
 
 #error-screen-5 {
-  bottom: 170px;
-  right: 450px;
+  /* bottom: 170px;
+  right: 450px; */
+  bottom: 15%;
+  right: 11%;
 }
 
 .box-info {

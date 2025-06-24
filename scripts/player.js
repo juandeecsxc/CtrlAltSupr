@@ -4,6 +4,7 @@ export const backpackItems = {
   KEY_1: 'LLAVE PUERTA 1 🗝️',
   KEY_2: 'LLAVE PUERTA 2 🗝️',
   KEY_3: 'LLAVE PUERTA 3 🗝️',
+  MY_OBJECT: 'MI OBJETO 💠',
 }
 
 export const playerStatus = {
