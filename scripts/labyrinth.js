@@ -234,12 +234,12 @@ doors.forEach((door, index) => {
 keyContinue.addEventListener('click', () => {
   player.backpack.push(throwed_key);
   updatePlayerStats(player);
-  keyModal.classList.add('is-hidden');
+  closeModal(keyModal);
   throwedKey.style.display = 'none';
 });
 
 keyCancel.addEventListener('click', () => {
-  keyModal.classList.add('is-hidden');
+  closeModal(keyModal);
   throwedKey.style.display = 'block';
 });
 
