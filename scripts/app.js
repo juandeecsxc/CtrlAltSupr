@@ -2,6 +2,7 @@ import { openModal, closeModal, isOpened } from './bulma.js';
 import { init as initProtocol } from './protocol.js';
 import { playerStatus } from './player.js';
 import { audioElements, audio } from './audio.js';
+import './crudy.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
