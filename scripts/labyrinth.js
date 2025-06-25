@@ -154,6 +154,11 @@ function removeClosedDoor(closedDoor) {
   closedDoors.splice(doorIndex, 1);
 }
 
+function initRepair() {
+  console.log('Inicializando sección de reparación...');
+  // Aquí puedes agregar lógica específica para la sección "repair"
+}
+
 function endLabyrinth() {
   audio.stop(labyrinthAudio);
   audio.stop(waterDropAudio);

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/protocol.css" />
   <link rel="stylesheet" href="./assets/css/labyrinth.css" />
+  <link rel="stylesheet" href="./assets/css/repair.css">
 </head>
 
 <body>
@@ -187,14 +188,61 @@
         </div>
       </section>
       <section id="repair" class="hero is-fullheight slow-fade-in is-hidden">
-        <div class="container is-fluid">
-          <div class="pl-3 pt-3 hero">
-            <h2 class="title is-5 mb-2">Name - Description</h2>
+        <div class="repair-mask"></div>
+        <!-- <div class="container is-fluid">
+          <div class="container is-fluid pl-3 pt-3">
+            <h2 class="title is-5 mb-2">Centro de Reparación - Desafío de Reconstrucción</h2>
             <h3 class="title is-6">
-              <span class="is-block"><strong>Sala:</strong> A-101</span>
-              <span class="is-block"><strong>Fecha:</strong> 22/06/2025</span>
-              <span class="is-block"><strong>Hora:</strong> 10:00 AM</span>
+              <span class="is-block"><strong>Sala:</strong> R-303</span>
+              <span class="is-block"><strong>Fecha:</strong> 24/06/2025</span>
+              <span class="is-block"><strong>Hora:</strong> 02:30 AM</span>
             </h3>
+          </div>
+        </div> -->
+        <div class="repair-container">
+          <div class="repair-interface">
+            <div class="repair-header">
+              <div class="repair-status">
+                <h4 class="title is-4 has-text-centered">CRUDY REQUIERE UNA REPARACIÓN</h4>
+              </div>
+            </div>
+            <div class="repair-initialization">
+              <button id="start-repair" class="button is-primary is-large">Iniciar Reparación</button>
+            </div>
+          </div>
+          <div class="modals">
+            <div id="repair-success-modal" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <div class="box">
+                  <h4 class="title is-4 mb-2 has-text-centered has-text-success">¡Reparación Exitosa!</h4>
+                  <p class="has-text-centered">Has completado la secuencia correctamente</p>
+                  <p class="has-text-centered">CRUDY HA SIDO PARCIALMENTE REPARADO</p>
+                  <div class="buttons is-centered">
+                    <button id="success-continue" class="button is-success mt-4">Continuar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="repair-fail-modal" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <div class="box">
+                  <h4 class="title is-4 mb-2 has-text-centered has-text-danger">Reparación Fallida</h4>
+                  <p class="has-text-centered">La secuencia es incorrecta.</p>
+                  <p id="failure-message" class="has-text-centered"></p>
+                  <div class="buttons is-centered">
+                    <button id="failure-continue" class="button is-danger mt-4">Continuar</button>
+                    <!-- Que tanto es posible que si se equivoca aparezca un muñeco que asuste  -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="repair-exit-modal" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+              </div>
+            </div>
           </div>
         </div>
       </section>
