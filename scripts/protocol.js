@@ -2,10 +2,9 @@ import { startTyping, showMessage, playerDamage, updatePlayerStats } from './uti
 import { protocolStory } from './story.js';
 import { playerStatus, backpackItems } from './player.js';
 import { init as initLabyrinth } from './labyrinth.js';
+import { audio } from './audio.js';
 
 const protocol = document.getElementById('protocol');
-const protocolAudio = document.getElementById('protocol-audio');
-const alarmAudio = document.getElementById('alarm-audio');
 
 const btnContinue = document.getElementById('protocol-continue');
 const typewriterText = document.querySelector('.typewriter-text');
@@ -24,8 +23,7 @@ export function init(playerStats) {
   setTimeout(() => {
     player = playerStats;
     updatePlayerStats(player);
-    protocolAudio.volume = 0.3;
-    protocolAudio.play();
+    audio.protocolAudio.play();
     showInfoBox();
   }, 2000);
 }
@@ -49,8 +47,8 @@ function showInfoBox() {
 }
 
 function endProtocol() {
-  alarmAudio.pause();
-  protocolAudio.pause();
+  audio.alarmAudio.pause();
+  audio.protocolAudio.pause();
   protocol.classList.add('is-hidden');
   initLabyrinth(player);
 }
@@ -61,8 +59,7 @@ btnContinue.addEventListener('click', () => {
     showInfoBox();
   } else {
     boxInfo.style.display = 'none';
-    alarmAudio.volume = 0.4;
-    alarmAudio.play();
+    audio.alarmAudio.play();
     boxOptions.style.display = 'flex';
   }
 });
