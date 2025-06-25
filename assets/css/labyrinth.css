@@ -84,7 +84,7 @@
   transform: rotateY(55deg) rotateX(0deg) rotate3d(0, 1, 0, -25deg);
   transform-origin: center center;
   filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 1)) drop-shadow(-5px -5px 10px rgba(0, 0, 0, 1)) brightness(1) contrast(1.1) saturate(2) hue-rotate(-5deg);
-  z-index: 1000;
+  z-index: 10;
 }
 
 #opened-door_3 {

@@ -25,9 +25,10 @@ const babyScreamAudio = document.getElementById('baby-cry-audio');
 const crowdScreamAudio = document.getElementById('crowd-scream-audio');
 const manScreamAudio = document.getElementById('man-scream-audio');
 const roarAudio = document.getElementById('roar-audio');
+const screamerAudio = document.getElementById('screamer-audio');
 
-labyrinthAudio.volume = 0.8;
-waterDropAudio.volume = 0.5;
+labyrinthAudio.volume = 1;
+waterDropAudio.volume = 0.8;
 doorAudio.volume = 0.5;
 keyLockedAudio.volume = 0.8;
 keyUnlockedAudio.volume = 0.8;
@@ -36,12 +37,13 @@ babyScreamAudio.volume = 1;
 crowdScreamAudio.volume = 0.8;
 manScreamAudio.volume = 0.8;
 roarAudio.volume = 1;
+screamerAudio.volume = 1;
 
 // Other audio
 const keyboardAudio = document.getElementById('keyboard-audio');
 const painAudio = document.getElementById('pain-audio');
 
-keyboardAudio.volume = 0.2;
+keyboardAudio.volume = 0.6;
 painAudio.volume = 1;
 
 function play(audio) {
@@ -81,7 +83,8 @@ export const audioElements = {
   manScreamAudio,
   roarAudio,
   keyboardAudio,
-  painAudio
+  painAudio,
+  screamerAudio
 }
 
 export const audio = {

@@ -1,4 +1,5 @@
 import { audioElements, audio } from './audio.js';
+import { showScreamer } from './crudy.js';
 
 export const backpackItems = {
   CORRUPTION_MARK: 'CORRUPCIÓN 😈',
@@ -24,8 +25,11 @@ export const playerStatus = {
 
 export function playerDamage(player, damage) {
   const { painAudio } = audioElements;
-  if (player.health.length === 0) return;
+  if (player.health.length === 0) {
+    return;
+  };
   for (let i = 0; i < damage; i++) {
+    console.log(i);
     player.health.pop();
   }
 
@@ -33,4 +37,8 @@ export function playerDamage(player, damage) {
     player.mentalState = playerStatus.DYING;
   }
   audio.play(painAudio);
+
+  if (player.health.length === 0) {
+    showScreamer();
+  }
 }

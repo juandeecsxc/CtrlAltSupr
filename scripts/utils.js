@@ -1,5 +1,24 @@
 import { audioElements, audio } from './audio.js';
 
+const roomInfo = document.getElementById('room-info');
+
+export function showRoomInfo(title, room, date, time) {
+  roomInfo.classList.remove('is-hidden');
+  const roomTitle = document.getElementById('room-title');
+  const roomPlace = document.getElementById('room-place');
+  const roomDate = document.getElementById('room-date');
+  const roomTime = document.getElementById('room-time');
+
+  roomTitle.textContent = title
+  roomPlace.textContent = room;
+  roomDate.textContent = date;
+  roomTime.textContent = time;
+}
+
+export function hideRoomInfo() {
+  roomInfo.classList.add('is-hidden');
+}
+
 export function startTyping(textToType, elementText, button = null, typingSpeed = 50) {
   const { keyboardAudio } = audioElements;
   let charIndex = 0;
@@ -7,8 +26,8 @@ export function startTyping(textToType, elementText, button = null, typingSpeed 
   if (button) {
     const waitTime = textToType.length * typingSpeed + 5000;
     setTimeout(() => {
-      if (btnContinue.style.display === 'none') {
-        btnContinue.style.display = 'block';
+      if (button.style.display === 'none') {
+        button.style.display = 'block';
       }
     }, waitTime);
   }
@@ -68,8 +87,6 @@ export function updatePlayerStats(player) {
     playerStats.style.display = 'block';
   }, 200);
 }
-
-
 
 export function showMessage(message, time = 7000) {
   const messageBox = document.querySelector('.message-box');
