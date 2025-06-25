@@ -1,26 +1,47 @@
 import { playerStatus } from './player.js';
-import { audio, audioActions } from './audio.js';
+import { audioElements, audio } from './audio.js';
+
 
 export function startTyping(textToType, elementText, button = null, typingSpeed = 50) {
-  const { keyboardAudio } = audio;
+  const { keyboardAudio } = audioElements;
   let charIndex = 0;
 
-  function typeWriter() {
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        audioActions.stopAudio(keyboardAudio);
-        charIndex = textToType.length;
-        elementText.textContent = textToType;
-        if (button) {
-          button.style.display = 'block';
-        }
+  if (button) {
+    const waitTime = textToType.length * typingSpeed + 5000;
+    setTimeout(() => {
+      if (btnContinue.style.display === 'none') {
+        btnContinue.style.display = 'block';
       }
-    });
+    }, waitTime);
+  }
 
+  let stopTyping = false;
+  let event = (event) => {
+    if (event.key === 'Enter') {
+      stopTyping = true;
+    }
+  };
+  document.addEventListener('keydown', event);
+
+  function typeWriter() {
+    if (charIndex === textToType.length) {
+      return;
+    }
+
+    if (stopTyping) {
+      charIndex = textToType.length;
+      audio.stop(keyboardAudio);
+      elementText.textContent = textToType;
+      if (button) {
+        button.style.display = 'block';
+      }
+      document.removeEventListener('keydown', event);
+    }
+    
     if (charIndex < textToType.length) {
       elementText.textContent += textToType.charAt(charIndex);
       charIndex++;
-      audioActions.playAudio(keyboardAudio);
+      audio.play(keyboardAudio);
       setTimeout(typeWriter, typingSpeed);
     }
   }
@@ -51,7 +72,7 @@ export function updatePlayerStats(player) {
 }
 
 export function playerDamage(player, damage) {
-  const { painAudio } = audio;
+  const { painAudio } = audioElements;
   if (player.health.length === 0) return;
   for (let i = 0; i < damage; i++) {
     player.health.pop();
@@ -60,7 +81,7 @@ export function playerDamage(player, damage) {
   if (player.health.length === 1) {
     player.mentalState = playerStatus.DYING;
   }
-  audioActions.playAudio(painAudio);
+  audio.play(painAudio);
 }
 
 export function showMessage(message, time = 7000) {

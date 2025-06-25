@@ -1,7 +1,7 @@
 import { showMessage,updatePlayerStats, randomNumber } from './utils.js';
 import { backpackItems } from './player.js';
 import { openModal, closeModal } from './bulma.js';
-import { audio, audioActions } from './audio.js';
+import { audioElements, audio } from './audio.js';
 
 const labyrinth = document.getElementById('labyrinth');
 
@@ -25,7 +25,7 @@ const maxDoors = currentDoors.length;
 const keys = [ backpackItems.KEY_1, backpackItems.KEY_2, backpackItems.KEY_3 ];
 
 // Audio
-const { womanScreamAudio, babyScreamAudio, crowdScreamAudio, manScreamAudio, roarAudio, waterDropAudio, labyrinthAudio, doorAudio, keyLockedAudio, keyUnlockedAudio } = audio;
+const { womanScreamAudio, babyScreamAudio, crowdScreamAudio, manScreamAudio, roarAudio, waterDropAudio, labyrinthAudio, doorAudio, keyLockedAudio, keyUnlockedAudio } = audioElements;
 const screamsAudio = [ [womanScreamAudio, babyScreamAudio], crowdScreamAudio, [manScreamAudio, roarAudio] ];
 
 let player = {};
@@ -54,8 +54,8 @@ export function init(playerStats) {
 }
 
 function initAudio() {
-  audioActions.playAudio(waterDropAudio);
-  audioActions.playAudio(labyrinthAudio);
+  audio.play(waterDropAudio);
+  audio.play(labyrinthAudio);
 }
 
 function randomizeScreams() {
@@ -101,10 +101,10 @@ function playScream(index, isDoorOpen) {
   setTimeout(() => {
     if (isDoorOpen[index]) {
       if (Array.isArray(screams[index])) {
-        audioActions.playAudio(screams[index][0]);
-        audioActions.playAudio(screams[index][1]);
+        audio.play(screams[index][0]);
+        audio.play(screams[index][1]);
       } else {
-        audioActions.playAudio(screams[index]);
+        audio.play(screams[index]);
       }
     }
   }, 1000);
@@ -118,10 +118,10 @@ function stopAllScreams() {
 
 function stopScream(index) {
   if (Array.isArray(screams[index])) {
-    audioActions.stopAudio(screams[index][0]);
-    audioActions.stopAudio(screams[index][1]);
+    audio.stop(screams[index][0]);
+    audio.stop(screams[index][1]);
   } else {
-    audioActions.stopAudio(screams[index]);
+    audio.stop(screams[index]);
   }
 }
 
@@ -129,14 +129,14 @@ function openDoor(index, openedDoor, closedDoor) {
   isDoorOpen[index] = true;
   openedDoor.classList.add('is-active');
   closedDoor.classList.add('is-active');
-  audioActions.playAudio(doorAudio);
+  audio.play(doorAudio);
 }
 
 function closeDoor(index, openedDoor, closedDoor) {
   isDoorOpen[index] = false;
   openedDoor.classList.remove('is-active');
   closedDoor.classList.remove('is-active');
-  audioActions.stopAudio(doorAudio);
+  audio.stop(doorAudio);
 }
 
 function useKey(index) {
@@ -151,9 +151,9 @@ function removeClosedDoor(closedDoor) {
 }
 
 function endLabyrinth() {
-  audioActions.stopAudio(labyrinthAudio);
-  audioActions.stopAudio(waterDropAudio);
-  audioActions.stopAudio(doorAudio);
+  audio.stop(labyrinthAudio);
+  audio.stop(waterDropAudio);
+  audio.stop(doorAudio);
   stopAllScreams();
   labyrinth.classList.add('is-hidden');
 }
@@ -189,17 +189,17 @@ doors.forEach((door, index) => {
 
     if (closedDoors.includes(closedDoor.id)) {
       if (player.backpack.includes(keys[index])) {
-        audioActions.playAudio(keyUnlockedAudio);
+        audio.play(keyUnlockedAudio);
         useKey(index);
         removeClosedDoor(closedDoor);
         showMessage(`Has abierto la puerta ${index + 1}.`, 3000);
       }
       else if (player.backpack.includes(backpackItems.KEY_MASTER)){
-        audioActions.playAudio(keyUnlockedAudio);
+        audio.play(keyUnlockedAudio);
         removeClosedDoor(closedDoor);
         showMessage("Has abierto la puerta con la llave maestra.", 3000);
       } else {
-        audioActions.playAudio(keyLockedAudio);
+        audio.play(keyLockedAudio);
         showMessage("La puerta está cerrada, necesitas una llave para abrirla.", 3000);
         return;
       }

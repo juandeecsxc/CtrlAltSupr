@@ -44,19 +44,19 @@ const painAudio = document.getElementById('pain-audio');
 keyboardAudio.volume = 0.2;
 painAudio.volume = 1;
 
-function playAudio(audio) {
+function play(audio) {
   audio.play();
 }
 
-function muteAudio(audio) {
+function mute(audio) {
   audio.muted = true;
 }
 
-function unmuteAudio(audio) {
+function unmute(audio) {
   audio.muted = false;
 }
 
-function stopAudio(audio) {
+function stop(audio) {
   audio.pause();
   audio.load();
 }
@@ -65,7 +65,7 @@ function setVolume(audio, volume) {
   audio.volume = volume;
 }
 
-export const audio = {
+export const audioElements = {
   themeAudio,
   startGameAudio,
   protocolAudio,
@@ -79,13 +79,15 @@ export const audio = {
   babyScreamAudio,
   crowdScreamAudio,
   manScreamAudio,
-  roarAudio
+  roarAudio,
+  keyboardAudio,
+  painAudio
 }
 
-export const audioActions = {
-  playAudio,
-  stopAudio,
+export const audio = {
+  play,
+  stop,
   setVolume,
-  muteAudio,
-  unmuteAudio
+  mute,
+  unmute
 }
