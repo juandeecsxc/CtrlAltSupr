@@ -1,21 +1,21 @@
 import './bulma.js';
 import { init as initProtocol } from './protocol.js';
 import { playerStatus } from './player.js';
+import { audio } from './audio.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
 
   // Intro Section
-  const intro = document.getElementById('intro');
-  const themeAudio = document.getElementById('theme-audio');
+  const intro = document.getElementById('intro'); 
   const mute = document.getElementById('mute');
   const unmute = document.getElementById('unmute');
 
   const continueButton = document.getElementById('continue');
   const instructions = document.getElementById('instructions');
   const startGame = document.getElementById('start-game');
-  const startGameAudio = document.getElementById('start-game-audio');
   const mask = document.querySelector('.white-mask');
+
 
   /* Variables */
   let audioStarted = false;
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startAudio() {
     if (!audioStarted) {
-      themeAudio.volume = 0.25;
-      themeAudio.play()
+      
+      audio.themeAudio.play()
         .then(() => {
           console.log('Audio de juego iniciado correctamente.');
           audioStarted = true;
@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function muteAudio() {
-    themeAudio.muted = true;
+    audio.themeAudio.muted = true;
     mute.style.display = 'none';
     unmute.style.display = 'block';
   }
 
   function unmuteAudio() {
-    themeAudio.muted = false;
+    audio.themeAudio.muted = false;
     mute.style.display = 'block';
     unmute.style.display = 'none';
   }
@@ -71,9 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   startGame.addEventListener('click', () => {
-    themeAudio.pause();
-    startGameAudio.volume = 0.5;
-    startGameAudio.play();
+    audio.themeAudio.pause();
+    audio.startGameAudio.play();
     intro.classList.add('is-hidden');
     mask.classList.add('is-hidden');
     initProtocol(player);
