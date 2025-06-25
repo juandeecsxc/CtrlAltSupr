@@ -1,6 +1,6 @@
-import { startTyping, showMessage, playerDamage, updatePlayerStats } from './utils.js';
+import { startTyping, showMessage, updatePlayerStats } from './utils.js';
 import { protocolStory } from './story.js';
-import { playerStatus, backpackItems } from './player.js';
+import { playerStatus, backpackItems, playerDamage } from './player.js';
 import { init as initLabyrinth } from './labyrinth.js';
 import { audioElements, audio } from './audio.js';
 
