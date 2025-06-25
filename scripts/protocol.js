@@ -2,7 +2,7 @@ import { startTyping, showMessage, playerDamage, updatePlayerStats } from './uti
 import { protocolStory } from './story.js';
 import { playerStatus, backpackItems } from './player.js';
 import { init as initLabyrinth } from './labyrinth.js';
-import { audio } from './audio.js';
+import { audioElements, audio } from './audio.js';
 
 const protocol = document.getElementById('protocol');
 
@@ -15,6 +15,9 @@ const optNucleo = document.getElementById('optNucleo');
 const optEspacio = document.getElementById('optEspacio');
 const optSimulado = document.getElementById('optSimulado');
 
+// Audio
+const { protocolAudio, alarmAudio } = audioElements;
+
 let currentStep = 0;
 let player = {};
 
@@ -23,7 +26,7 @@ export function init(playerStats) {
   setTimeout(() => {
     player = playerStats;
     updatePlayerStats(player);
-    audio.protocolAudio.play();
+    audio.play(protocolAudio);
     showInfoBox();
   }, 2000);
 }
@@ -34,33 +37,34 @@ function showInfoBox() {
   typewriterText.textContent = '';
   boxInfo.style.display = 'flex';
 
-  const typingSpeed = 50;
-  const waitTime = textToType.length * typingSpeed + 5000;
-
-  startTyping(textToType, typewriterText, btnContinue, typingSpeed);
-
-  setTimeout(() => {
-    if (btnContinue.style.display === 'none') {
-      btnContinue.style.display = 'block';
-    }
-  }, waitTime);
+  startTyping(textToType, typewriterText, btnContinue);
 }
 
 function endProtocol() {
-  audio.alarmAudio.pause();
-  audio.protocolAudio.pause();
+  audio.stop(alarmAudio);
+  audio.stop(protocolAudio);
   protocol.classList.add('is-hidden');
   initLabyrinth(player);
+  document.removeEventListener('keydown', keyDownEvent);
 }
 
+function keyDownEvent(event) {
+  if (event.key === 'Enter') {
+    btnContinue.click();
+  }
+}
+document.addEventListener('keydown', keyDownEvent);
+
 btnContinue.addEventListener('click', () => {
-  currentStep++;
-  if (currentStep < protocolStory.length) {
-    showInfoBox();
-  } else {
-    boxInfo.style.display = 'none';
-    audio.alarmAudio.play();
-    boxOptions.style.display = 'flex';
+  if (btnContinue.style.display === 'block') {
+    currentStep++;
+    if (currentStep < protocolStory.length) {
+      showInfoBox();
+    } else {
+      boxInfo.style.display = 'none';
+      audio.play(alarmAudio);
+      boxOptions.style.display = 'flex';
+    }
   }
 });
 

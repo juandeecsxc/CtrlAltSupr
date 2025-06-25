@@ -1,7 +1,7 @@
-import './bulma.js';
+import { openModal, closeModal, isOpened } from './bulma.js';
 import { init as initProtocol } from './protocol.js';
 import { playerStatus } from './player.js';
-import { audio, audioActions } from './audio.js';
+import { audioElements, audio } from './audio.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mask = document.querySelector('.white-mask');
 
   // Audio
-  const { themeAudio, startGameAudio } = audio;
+  const { themeAudio, startGameAudio } = audioElements;
 
   // PJ Stats
   const player = {
@@ -31,39 +31,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Functions */
   function init() {
-    instructions.classList.add('is-active');
+    openModal(instructions);
   }
 
   function initAudio() {
-    audioActions.playAudio(themeAudio);
+    audio.play(themeAudio);
   }
 
   function muteAudio() {
-    audioActions.muteAudio(themeAudio);
+    audio.mute(themeAudio);
     mute.style.display = 'none';
     unmute.style.display = 'block';
   }
 
   function unmuteAudio() {
-    audioActions.unmuteAudio(themeAudio);
+    audio.unmute(themeAudio);
     mute.style.display = 'block';
     unmute.style.display = 'none';
   }
 
+  function keyDownEvent(event) {
+    if (event.key === 'Enter') {
+      if (isOpened(instructions)) {
+        continueButton.click();
+      } else {
+        startGame.click();
+      }
+    }
+  }
+
   /* Event listeners */
+  document.addEventListener('keydown', keyDownEvent);
+
   mute.addEventListener('click', () => muteAudio());
   unmute.addEventListener('click', () => unmuteAudio());
   
   continueButton.addEventListener('click', () => {
-    instructions.classList.remove('is-active');
+    closeModal(instructions);
     initAudio();
   });
 
   startGame.addEventListener('click', () => {
-    audioActions.stopAudio(themeAudio);
-    audioActions.playAudio(startGameAudio);
+    audio.stop(themeAudio);
+    audio.play(startGameAudio);
     intro.classList.add('is-hidden');
     mask.classList.add('is-hidden');
     initProtocol(player);
+    document.removeEventListener('keydown', keyDownEvent);
   });
 });

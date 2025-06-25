@@ -6,6 +6,10 @@ export function closeModal($el) {
   $el.classList.remove('is-active');
 }
 
+export function isOpened($el) {
+  return $el.classList.contains('is-active');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const modals = document.querySelectorAll('.modal') || [];
   const triggers = document.querySelectorAll('.js-modal-trigger') || [];
