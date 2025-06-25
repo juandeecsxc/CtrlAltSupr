@@ -1,5 +1,5 @@
 import { showMessage,updatePlayerStats, randomNumber } from './utils.js';
-import { backpackItems } from './player.js';
+import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
 
@@ -28,10 +28,14 @@ const keys = [ backpackItems.KEY_1, backpackItems.KEY_2, backpackItems.KEY_3 ];
 const { womanScreamAudio, babyScreamAudio, crowdScreamAudio, manScreamAudio, roarAudio, waterDropAudio, labyrinthAudio, doorAudio, keyLockedAudio, keyUnlockedAudio } = audioElements;
 const screamsAudio = [ [womanScreamAudio, babyScreamAudio], crowdScreamAudio, [manScreamAudio, roarAudio] ];
 
+// Player effects
+// const playerEffects = {};
+
 let player = {};
 let closedDoors = [];
 let screams = [];
 let throwed_key = "";
+let choosenDoor = -1;
 
 export function init(playerStats) {
   labyrinth.classList.remove('is-hidden');
@@ -156,6 +160,7 @@ function endLabyrinth() {
   audio.stop(doorAudio);
   stopAllScreams();
   labyrinth.classList.add('is-hidden');
+  updatePlayerStats(player);
 }
 
 const isDoorOpen = [false, false, false];
@@ -184,6 +189,7 @@ doors.forEach((door, index) => {
   door.addEventListener('click', () => {
     if (isDoorOpen[index]) {
       openModal(confirmModal);
+      choosenDoor = index;
       return;
     }
 
@@ -221,5 +227,22 @@ keyCancel.addEventListener('click', () => {
   throwedKey.style.display = 'block';
 });
 
-confirmContinue.addEventListener('click', () => endLabyrinth());
+confirmContinue.addEventListener('click', () => {
+  if (choosenDoor === -1) return;
+  player.mentalState = playerStatus.SCARED;
+
+  switch (choosenDoor) {
+    case 0:
+      playerDamage(player, 1);
+      break;
+    case 1:
+      playerDamage(player, 2);
+      break;
+    case 2:
+      playerDamage(player, 3);
+      break;
+  }
+
+  endLabyrinth()
+});
 confirmCancel.addEventListener('click', () => closeModal(confirmModal));
