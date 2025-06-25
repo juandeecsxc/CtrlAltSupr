@@ -1,6 +1,4 @@
-import { playerStatus } from './player.js';
 import { audioElements, audio } from './audio.js';
-
 
 export function startTyping(textToType, elementText, button = null, typingSpeed = 50) {
   const { keyboardAudio } = audioElements;
@@ -71,18 +69,7 @@ export function updatePlayerStats(player) {
   }, 200);
 }
 
-export function playerDamage(player, damage) {
-  const { painAudio } = audioElements;
-  if (player.health.length === 0) return;
-  for (let i = 0; i < damage; i++) {
-    player.health.pop();
-  }
 
-  if (player.health.length === 1) {
-    player.mentalState = playerStatus.DYING;
-  }
-  audio.play(painAudio);
-}
 
 export function showMessage(message, time = 7000) {
   const messageBox = document.querySelector('.message-box');
