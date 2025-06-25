@@ -4,9 +4,15 @@
 const themeAudio = document.getElementById('theme-audio');
 const startGameAudio = document.getElementById('start-game-audio');
 
+themeAudio.volume = 0.6;
+startGameAudio.volume = 0.5;
+
 // Protocol audio
 const protocolAudio = document.getElementById('protocol-audio');
 const alarmAudio = document.getElementById('alarm-audio');
+
+protocolAudio.volume = 1;
+alarmAudio.volume = 0.25;
 
 // Labyrinth audio
 const labyrinthAudio = document.getElementById('labyrinth-audio');
@@ -20,11 +26,6 @@ const crowdScreamAudio = document.getElementById('crowd-scream-audio');
 const manScreamAudio = document.getElementById('man-scream-audio');
 const roarAudio = document.getElementById('roar-audio');
 
-// General volume
-themeAudio.volume = 0.6;
-startGameAudio.volume = 0.5;
-alarmAudio.volume = 0.25;
-protocolAudio.volume = 1;
 labyrinthAudio.volume = 0.8;
 waterDropAudio.volume = 0.5;
 doorAudio.volume = 0.2;
@@ -35,6 +36,13 @@ babyScreamAudio.volume = 0.5;
 crowdScreamAudio.volume = 0.5;
 manScreamAudio.volume = 0.5;
 roarAudio.volume = 0.5;
+
+// Other audio
+const keyboardAudio = document.getElementById('keyboard-audio');
+const painAudio = document.getElementById('pain-audio');
+
+keyboardAudio.volume = 0.2;
+painAudio.volume = 1;
 
 function playAudio(audio) {
   audio.play();
