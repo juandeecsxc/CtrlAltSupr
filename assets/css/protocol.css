@@ -25,30 +25,21 @@
 }
 
 #error-screen-1 {
-  /* bottom: 180px;
-  left: 15px; */
-
   bottom: 15%;
   left: 0.9%;
 }
 
 #error-screen-3 {
-  /* bottom: 170px;
-  left: 620px; */
   bottom: 15%;
   left: 32%;
 }
 
 #error-screen-4 {
-  /* bottom: 170px;
-  left: 890px; */
   bottom: 15%;
   left: 48%;
 }
 
 #error-screen-5 {
-  /* bottom: 170px;
-  right: 450px; */
   bottom: 15%;
   right: 11%;
 }

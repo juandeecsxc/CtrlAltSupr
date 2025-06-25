@@ -2,7 +2,6 @@ import { openModal, closeModal, isOpened } from './bulma.js';
 import { init as initProtocol } from './protocol.js';
 import { playerStatus } from './player.js';
 import { audioElements, audio } from './audio.js';
-import './crudy.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mask = document.querySelector('.white-mask');
 
   // Audio
-  const { themeAudio, startGameAudio } = audioElements;
+  const { themeAudio, startGameAudio, screamerAudio } = audioElements;
 
   // PJ Stats
   const player = {

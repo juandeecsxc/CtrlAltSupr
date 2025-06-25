@@ -1,4 +1,4 @@
-import { showMessage,updatePlayerStats, randomNumber } from './utils.js';
+import { showMessage,updatePlayerStats, randomNumber, showRoomInfo } from './utils.js';
 import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
@@ -54,6 +54,7 @@ export function init(playerStats) {
   setTimeout(() => {
     updatePlayerStats(player);
     initAudio();
+    showRoomInfo('El Laberinto de Decisión - El Primer Encuentro', 'B-101', '22/06/2025', '10:00 AM');
   }, 2000);
 }
 
@@ -166,6 +167,7 @@ function endLabyrinth() {
   stopAllScreams();
   labyrinth.classList.add('is-hidden');
   updatePlayerStats(player);
+  hideRoomInfo();
 }
 
 const isDoorOpen = [false, false, false];

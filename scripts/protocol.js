@@ -1,4 +1,4 @@
-import { startTyping, showMessage, updatePlayerStats } from './utils.js';
+import { startTyping, showMessage, updatePlayerStats, showRoomInfo, hideRoomInfo } from './utils.js';
 import { protocolStory } from './story.js';
 import { playerStatus, backpackItems, playerDamage } from './player.js';
 import { init as initLabyrinth } from './labyrinth.js';
@@ -28,6 +28,7 @@ export function init(playerStats) {
     updatePlayerStats(player);
     audio.play(protocolAudio);
     showInfoBox();
+    showRoomInfo('Inicio del Protocolo - La Bienvenida de la Corrupción', 'A-101', '22/06/2025', '10:00 AM');
   }, 2000);
 }
 
@@ -45,6 +46,7 @@ function endProtocol() {
   audio.stop(protocolAudio);
   protocol.classList.add('is-hidden');
   initLabyrinth(player);
+  hideRoomInfo();
   document.removeEventListener('keydown', keyDownEvent);
 }
 

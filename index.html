@@ -47,7 +47,8 @@
       <audio id="woman-scream-audio" src="./assets/audio/woman_scream.mp3" preload="auto" loop></audio>
       <audio id="crowd-scream-audio" src="./assets/audio/crowd_scream.mp3" preload="auto" loop></audio>
       <audio id="man-scream-audio" src="./assets/audio/man_scream.mp3" preload="auto" loop></audio>
-      <audio id="roar-audio" src="./assets/audio/roar.mp3" loop preload="auto"></audio>
+      <audio id="roar-audio" src="./assets/audio/roar.mp3" preload="auto" loop></audio>
+      <audio id="screamer-audio" src="./assets/audio/screamer.mp3" preload="auto" loop></audio>
     </div>
     <div class="white-mask"></div>
     <div class="message-box notification is-danger is-light">
@@ -69,6 +70,31 @@
         </p>
       </div>
     </div>
+    <div id="room-info" class="is-hidden fast-fade-in">
+      <div class="pl-3 pt-3 hero">
+        <h2 id="room-title" class="title is-5 mb-2"></h2>
+        <h3 class="title is-6">
+          <span class="is-block"><strong>Sala:</strong> <span id="room-place"></span></span>
+          <span class="is-block"><strong>Fecha:</strong> <span id="room-date"></span></span>
+          <span id="room-time" class="is-block"><strong>Hora:</strong> <span id="room-time"></span></span>
+        </h3>
+      </div>
+    </div>
+    <div id="screamer" class="is-hidden">
+      <div class="screamer-mask quick-blink"></div>
+    </div>
+    <div id="game-over" class="is-hidden slow-fade-in">
+      <div class="game-over-container">
+        <div class="box has-text-centered">
+          <h2 class="title is-2 mb-2 is-danger">Game Over</h2>
+          <p>Has perdido la partida.</p>
+          <div class="buttons is-centered">
+            <button id="restart-game" class="button is-danger is-outlined mt-4" onclick="window.location.reload()">Reiniciar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="playground">
       <section id="intro" class="hero is-fullheight">
         <div class="container is-fluid">
@@ -91,14 +117,6 @@
           <img id="error-screen-3" class="screen" src="./assets/img/p_5.gif" alt="error_screen_3">
           <img id="error-screen-4" class="screen" src="./assets/img/p_2.gif" alt="error_screen_4">
           <img id="error-screen-5" class="screen" src="./assets/img/p_5.gif" alt="error_screen_5">
-        </div>
-        <div class="pl-3 pt-3 hero">
-          <h2 class="title is-5 mb-2">Inicio del Protocolo - La Bienvenida de la Corrupción</h2>
-          <h3 class="title is-6">
-            <span class="is-block"><strong>Sala:</strong> A-101</span>
-            <span class="is-block"><strong>Fecha:</strong> 22/06/2025</span>
-            <span class="is-block"><strong>Hora:</strong> 10:00 AM</span>
-          </h3>
         </div>
         <div
           class="container is-fluid hero is-halfheight is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
@@ -125,16 +143,6 @@
       </section>
       <section id="labyrinth" class="hero is-fullheight slow-fade-in is-hidden">
         <div class="worn-mask"></div>
-        <div class="container is-fluid">
-          <div class="container is-fluid pl-3 pt-3">
-            <h2 class="title is-5 mb-2">El Laberinto de Decisión - El Primer Encuentro</h2>
-            <h3 class="title is-6">
-              <span class="is-block"><strong>Sala:</strong> B-101</span>
-              <span class="is-block"><strong>Fecha:</strong> 23/06/2025</span>
-              <span class="is-block"><strong>Hora:</strong> 12:00 PM</span>
-            </h3>
-          </div>
-        </div>
         <div class="room-container">
           <div class="doors-container">
             <div class="door-container door-1 fast-fade-in">
