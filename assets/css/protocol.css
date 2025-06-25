@@ -20,7 +20,7 @@
 .screen {
   position: absolute;
   width: 13%;
-  height: 15%;
+  height: 16%;
   border-radius: 10px;
 }
 
@@ -29,7 +29,7 @@
   left: 15px; */
 
   bottom: 15%;
-  left: 1%;
+  left: 0.9%;
 }
 
 #error-screen-3 {

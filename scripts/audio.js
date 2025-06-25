@@ -28,14 +28,14 @@ const roarAudio = document.getElementById('roar-audio');
 
 labyrinthAudio.volume = 0.8;
 waterDropAudio.volume = 0.5;
-doorAudio.volume = 0.2;
+doorAudio.volume = 0.5;
 keyLockedAudio.volume = 0.8;
 keyUnlockedAudio.volume = 0.8;
-womanScreamAudio.volume = 0.5;
-babyScreamAudio.volume = 0.5;
-crowdScreamAudio.volume = 0.5;
-manScreamAudio.volume = 0.5;
-roarAudio.volume = 0.5;
+womanScreamAudio.volume = 0.8;
+babyScreamAudio.volume = 1;
+crowdScreamAudio.volume = 0.8;
+manScreamAudio.volume = 0.8;
+roarAudio.volume = 1;
 
 // Other audio
 const keyboardAudio = document.getElementById('keyboard-audio');
