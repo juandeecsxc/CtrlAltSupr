@@ -36,6 +36,27 @@ crowdScreamAudio.volume = 0.5;
 manScreamAudio.volume = 0.5;
 roarAudio.volume = 0.5;
 
+function playAudio(audio) {
+  audio.play();
+}
+
+function muteAudio(audio) {
+  audio.muted = true;
+}
+
+function unmuteAudio(audio) {
+  audio.muted = false;
+}
+
+function stopAudio(audio) {
+  audio.pause();
+  audio.load();
+}
+
+function setVolume(audio, volume) {
+  audio.volume = volume;
+}
+
 export const audio = {
   themeAudio,
   startGameAudio,
@@ -51,4 +72,12 @@ export const audio = {
   crowdScreamAudio,
   manScreamAudio,
   roarAudio
+}
+
+export const audioActions = {
+  playAudio,
+  stopAudio,
+  setVolume,
+  muteAudio,
+  unmuteAudio
 }

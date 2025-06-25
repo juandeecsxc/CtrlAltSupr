@@ -1,7 +1,7 @@
 import './bulma.js';
 import { init as initProtocol } from './protocol.js';
 import { playerStatus } from './player.js';
-import { audio } from './audio.js';
+import { audio, audioActions } from './audio.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Elements */
@@ -16,9 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const startGame = document.getElementById('start-game');
   const mask = document.querySelector('.white-mask');
 
-
-  /* Variables */
-  let audioStarted = false;
+  // Audio
+  const { themeAudio, startGameAudio } = audio;
 
   // PJ Stats
   const player = {
@@ -35,28 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
     instructions.classList.add('is-active');
   }
 
-  function startAudio() {
-    if (!audioStarted) {
-      
-      audio.themeAudio.play()
-        .then(() => {
-          console.log('Audio de juego iniciado correctamente.');
-          audioStarted = true;
-        })
-        .catch(error => {
-          console.error('Error al intentar reproducir el audio:', error);
-        });
-    }
+  function initAudio() {
+    audioActions.playAudio(themeAudio);
   }
 
   function muteAudio() {
-    audio.themeAudio.muted = true;
+    audioActions.muteAudio(themeAudio);
     mute.style.display = 'none';
     unmute.style.display = 'block';
   }
 
   function unmuteAudio() {
-    audio.themeAudio.muted = false;
+    audioActions.unmuteAudio(themeAudio);
     mute.style.display = 'block';
     unmute.style.display = 'none';
   }
@@ -67,12 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   continueButton.addEventListener('click', () => {
     instructions.classList.remove('is-active');
-    startAudio();
+    initAudio();
   });
 
   startGame.addEventListener('click', () => {
-    audio.themeAudio.pause();
-    audio.startGameAudio.play();
+    audioActions.stopAudio(themeAudio);
+    audioActions.playAudio(startGameAudio);
     intro.classList.add('is-hidden');
     mask.classList.add('is-hidden');
     initProtocol(player);
