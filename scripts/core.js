@@ -1,6 +1,6 @@
-import { startTyping, showMessage, updatePlayerStats, showRoomInfo, hideRoomInfo } from './utils.js';
+import { startTyping, showMessage, updatePlayerStats, showRoomInfo } from './utils.js';
 import { playerStatus } from './player.js';
-import { coreQuestions, coreEndings } from './coreStory.js';
+import { coreStory } from './story.js';
 import { audioElements, audio } from './audio.js';
 
 const core = document.getElementById('core');
@@ -9,6 +9,9 @@ const coreTypewriterText = document.getElementById('core-typewriter-text');
 const coreContinueButton = document.getElementById('core-continue-button');
 const coreOptionsBox = document.getElementById('core-options-box'); 
 const coreAnswerButtonsContainer = document.getElementById('core-answer-buttons');
+
+const coreSteps = coreStory.steps;
+const coreEnd = coreStory.end;
 
 const { themeAudio } = audioElements;
 
@@ -32,8 +35,8 @@ export function init(playerStats) {
 }
 
 function displayQuestion() {
-  if (currentQuestionIndex < coreQuestions.length) {
-    const questionData = coreQuestions[currentQuestionIndex];
+  if (currentQuestionIndex < coreSteps.length) {
+    const questionData = coreSteps[currentQuestionIndex];
 
     coreInfoBox.style.display = 'block'; 
     coreTypewriterText.textContent = '';
@@ -94,22 +97,20 @@ function endCoreLevel() {
 
   let endingMessage = '';
   if (score >= PASSING_SCORE) {
-    endingMessage = coreEndings.liberation;
+    endingMessage = coreEnd.liberation;
     player.mentalState = playerStatus.HAPPY;
   } else if (score > 0) {
-    endingMessage = coreEndings.loop;
+    endingMessage = coreEnd.loop;
     player.mentalState = playerStatus.SAD;
   } else {
-    endingMessage = coreEndings.elimination;
+    endingMessage = coreEnd.elimination;
     player.mentalState = playerStatus.AGONIZED;
   }
   updatePlayerStats(player);
-  startTyping(`Fin del Juicio. Tu puntuación final es: ${score} de ${coreQuestions.length}. ${endingMessage}`, coreTypewriterText, coreContinueButton, 30);
+  startTyping(`Fin del Juicio. Tu puntuación final es: ${score} de ${coreSteps.length}. ${endingMessage}`, coreTypewriterText, coreContinueButton, 30);
 
   coreContinueButton.onclick = () => {
     showMessage("¡Juego Terminado! Gracias por jugar.", 5000);
     window.location.reload(); 
   };
 }
-
-//cambio

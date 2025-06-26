@@ -3,6 +3,7 @@ import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { showRoomInfo, hideRoomInfo } from './utils.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
+import { init as initCore } from './core.js';
 
 const repair = document.getElementById('repair');
 
@@ -101,26 +102,26 @@ function resetGame() {
   updateUI();
 }
 
-function updateUI() {
-  const diff = difficulties[gameState.difficulty];
-  difficultyIndicator.textContent = `Nivel: ${diff.name}`;
-  attemptsIndicator.textContent = `Intentos: ${gameState.maxAttempts - gameState.currentAttempts}`;
-  sequenceIndicator.textContent = `Secuencia: ${gameState.playerSequence.length}/${gameState.sequenceLength}`;
+// function updateUI() {
+//   const diff = difficulties[gameState.difficulty];
+//   difficultyIndicator.textContent = `Nivel: ${diff.name}`;
+//   attemptsIndicator.textContent = `Intentos: ${gameState.maxAttempts - gameState.currentAttempts}`;
+//   sequenceIndicator.textContent = `Secuencia: ${gameState.playerSequence.length}/${gameState.sequenceLength}`;
   
-  // Update button states
-  startRepairBtn.disabled = gameState.gameActive;
-  resetRepairBtn.disabled = !gameState.gameActive;
+//   // Update button states
+//   startRepairBtn.disabled = gameState.gameActive;
+//   resetRepairBtn.disabled = !gameState.gameActive;
   
-  // Update attempt indicator color
-  const remainingAttempts = gameState.maxAttempts - gameState.currentAttempts;
-  if (remainingAttempts <= 1) {
-    attemptsIndicator.className = 'tag is-danger';
-  } else if (remainingAttempts <= 2) {
-    attemptsIndicator.className = 'tag is-warning';
-  } else {
-    attemptsIndicator.className = 'tag is-info';
-  }
-}
+//   // Update attempt indicator color
+//   const remainingAttempts = gameState.maxAttempts - gameState.currentAttempts;
+//   if (remainingAttempts <= 1) {
+//     attemptsIndicator.className = 'tag is-danger';
+//   } else if (remainingAttempts <= 2) {
+//     attemptsIndicator.className = 'tag is-warning';
+//   } else {
+//     attemptsIndicator.className = 'tag is-info';
+//   }
+// }
 
 function generateSequence() {
   gameState.sequence = [];
@@ -301,23 +302,25 @@ function handleFailure() {
 }
 
 function startGame() {
-  if (gameState.gameActive) return;
+  endRepair();
+  // if (gameState.gameActive) return;
   
-  gameState.gameActive = true;
-  generateSequence();
-  updateUI();
+  // gameState.gameActive = true;
+  // generateSequence();
+  // updateUI();
   
-  repairStatusText.textContent = 'Iniciando diagnóstico del sistema...';
+  // repairStatusText.textContent = 'Iniciando diagnóstico del sistema...';
   
-  setTimeout(() => {
-    showSequence();
-  }, 1500);
+  // setTimeout(() => {
+  //   showSequence();
+  // }, 1500);
 }
 
 function endRepair() {
-  audio.stop(alarmAudio);
+  // audio.stop(alarmAudio);
   repair.classList.add('is-hidden');
-  updatePlayerStats(player);
+  initCore(player);
+  hideRoomInfo();
 }
 
 // Event listeners

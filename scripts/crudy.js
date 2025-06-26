@@ -12,11 +12,12 @@ let isRunning = false;
 
 function showScreamer() {
   screamer.classList.remove('is-hidden');
+  audio.stopAll();
   audio.play(screamerAudio);
   setTimeout(() => {
     gameOver.classList.remove('is-hidden');
-    audio.stopAll();
-  }, 10000);
+    audio.stop(screamerAudio);
+  }, 5000);
 }
 
 function executeScreamer() {
