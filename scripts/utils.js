@@ -98,7 +98,7 @@ export function updatePlayerStats(player) {
   }, 200);
 }
 
-export function showMessage(message, time = 7000) {
+export function showMessage(message, time = 5000) {
   const messageBox = document.querySelector('.message-box');
   if (!messageBox.style.display || messageBox.style.display === 'none') {
     const messageHTML = message.replace(/\n/g, '<br>');

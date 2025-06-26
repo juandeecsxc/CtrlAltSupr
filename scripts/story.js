@@ -14,7 +14,7 @@ const coreStep1 = {
     "Usar `Ctrl + C` en la terminal donde se ejecuta."
   ],
   correctAnswerIndex: 1, 
-  feedback: "Correcto. `Ctrl + C` es la señal de interrupción estándar para la mayoría de los procesos de consola."
+  feedback: "`Ctrl + C` es la señal de interrupción estándar para la mayoría de los procesos de consola."
 };
 
 const coreStep2 = {
@@ -23,6 +23,8 @@ const coreStep2 = {
     "Se ejecutará una vez y luego se detendrá.",
     "Entrará en un bucle infinito y consumirá toda la memoria."
   ],
+  correctAnswerIndex: 1, 
+  feedback: "Una función recursiva sin una condición de parada entrará en un bucle infinito y consumirá toda la memoria."
 };
 
 const coreStep3 = {
@@ -32,7 +34,7 @@ const coreStep3 = {
     "Principio de redundancia de datos."
   ],
   correctAnswerIndex: 0, 
-  feedback: "Correcto. El principio de menor privilegio asegura que los usuarios solo tengan el acceso mínimo necesario para realizar sus tareas."
+  feedback: "El principio de menor privilegio asegura que los usuarios solo tengan el acceso mínimo necesario para realizar sus tareas."
 };
 
 const coreStep4 = {
@@ -42,7 +44,7 @@ const coreStep4 = {
     "Un componente que limita el rendimiento general del sistema."
   ],
   correctAnswerIndex: 1, 
-  feedback: "Correcto. Un cuello de botella es la parte del sistema que, por su capacidad limitada, restringe el rendimiento del conjunto."
+  feedback: "Un cuello de botella es la parte del sistema que, por su capacidad limitada, restringe el rendimiento del conjunto."
 };
 
 const coreStep5 = {
@@ -52,7 +54,7 @@ const coreStep5 = {
     "Uso de la CPU en un solo núcleo."
   ],
   correctAnswerIndex: 0, 
-  feedback: "Correcto. La complejidad temporal (Big O notation) es la forma estándar de describir cómo el tiempo de ejecución de un algoritmo crece con el tamaño de la entrada."
+  feedback: "La complejidad temporal (Big O notation) es la forma estándar de describir cómo el tiempo de ejecución de un algoritmo crece con el tamaño de la entrada."
 };
 
 const coreEnd = {
