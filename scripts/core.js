@@ -108,6 +108,8 @@ function endCoreLevel() {
 
   coreContinueButton.onclick = () => {
     showMessage("¡Juego Terminado! Gracias por jugar.", 5000);
-    window.location.reload();
+    window.location.reload(); 
   };
 }
+
+//cambio
