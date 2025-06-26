@@ -17,6 +17,13 @@
   display: none;
 }
 
+.repair-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .repair-initialization {
   display: flex;
   flex-direction: column;

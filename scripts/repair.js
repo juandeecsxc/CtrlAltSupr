@@ -1,5 +1,6 @@
 import { showMessage, updatePlayerStats, randomNumber } from './utils.js';
 import { backpackItems, playerDamage, playerStatus } from './player.js';
+import { showRoomInfo, hideRoomInfo } from './utils.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
 
@@ -55,9 +56,8 @@ export function init(playerStats) {
   console.log('Inicializando sección de reparación...');
   repair.classList.remove('is-hidden');
   player = playerStats;
-  resetGame();
-  updateUI();
-  player = playerStats;
+  // resetGame();
+  // updateUI();
   
   // Determine difficulty based on player's mental state
   if (player.mentalState === playerStatus.SCARED) {
@@ -66,17 +66,15 @@ export function init(playerStats) {
     gameState.difficulty = 3;
   }
   
-  resetGame();
-  updateUI();
-  
   setTimeout(() => {
     updatePlayerStats(player);
     initAudio();
+    showRoomInfo('Centro de Reparación - Desafío de Reconstrucción', 'R-303', '24/06/2025', '02:30 AM');
   }, 2000);
 }
 
 function initAudio() {
-  audio.play(alarmAudio);
+  // audio.play(alarmAudio);
 }
 
 function resetGame() {
@@ -325,14 +323,14 @@ function endRepair() {
 // Event listeners
 startRepairBtn.addEventListener('click', startGame);
 
-resetRepairBtn.addEventListener('click', () => {
-  resetGame();
-  repairStatusText.textContent = 'Reparación reiniciada. Presiona "Iniciar Reparación" para comenzar.';
-});
+// resetRepairBtn.addEventListener('click', () => {
+//   resetGame();
+//   repairStatusText.textContent = 'Reparación reiniciada. Presiona "Iniciar Reparación" para comenzar.';
+// });
 
-exitRepairBtn.addEventListener('click', () => {
-  openModal(repairExitModal);
-});
+// exitRepairBtn.addEventListener('click', () => {
+//   openModal(repairExitModal);
+// });
 
 patternCells.forEach((cell, index) => {
   cell.addEventListener('click', () => {
@@ -362,11 +360,11 @@ failureContinue.addEventListener('click', () => {
   }
 });
 
-exitConfirm.addEventListener('click', () => {
-  closeModal(repairExitModal);
-  endRepair();
-});
+// exitConfirm.addEventListener('click', () => {
+//   closeModal(repairExitModal);
+//   endRepair();
+// });
 
-exitCancel.addEventListener('click', () => {
-  closeModal(repairExitModal);
-});
+// exitCancel.addEventListener('click', () => {
+//   closeModal(repairExitModal);
+// });

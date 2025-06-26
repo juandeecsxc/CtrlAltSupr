@@ -1,7 +1,9 @@
-import { showMessage,updatePlayerStats, randomNumber, showRoomInfo } from './utils.js';
+import { showMessage,updatePlayerStats, randomNumber, showRoomInfo, hideRoomInfo } from './utils.js';
 import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
+
+import { init as initRepair } from './repair.js';
 
 const labyrinth = document.getElementById('labyrinth');
 
@@ -155,11 +157,6 @@ function removeClosedDoor(closedDoor) {
   closedDoors.splice(doorIndex, 1);
 }
 
-function initRepair() {
-  console.log('Inicializando sección de reparación...');
-  // Aquí puedes agregar lógica específica para la sección "repair"
-}
-
 function endLabyrinth() {
   audio.stop(labyrinthAudio);
   audio.stop(waterDropAudio);
@@ -168,6 +165,7 @@ function endLabyrinth() {
   labyrinth.classList.add('is-hidden');
   updatePlayerStats(player);
   hideRoomInfo();
+  initRepair(player);
 }
 
 const isDoorOpen = [false, false, false];
@@ -250,6 +248,6 @@ confirmContinue.addEventListener('click', () => {
       break;
   }
 
-  endLabyrinth()
+  endLabyrinth();
 });
 confirmCancel.addEventListener('click', () => closeModal(confirmModal));
