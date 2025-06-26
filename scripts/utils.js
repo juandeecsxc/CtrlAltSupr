@@ -1,6 +1,8 @@
 import { audioElements, audio } from './audio.js';
+import { getRemainingTime } from './crudy.js';
 
 const roomInfo = document.getElementById('room-info');
+const roomRemainingTime = document.getElementById('room-remaining-time');
 
 export function showRoomInfo(title, room, date, time) {
   roomInfo.classList.remove('is-hidden');
@@ -13,6 +15,14 @@ export function showRoomInfo(title, room, date, time) {
   roomPlace.textContent = room;
   roomDate.textContent = date;
   roomTime.textContent = time;
+
+  const updateTime = () => {
+    const remainingTime = getRemainingTime();
+    const minutes = Math.floor(remainingTime / 60000);
+    const seconds = Math.floor((remainingTime % 60000) / 1000);
+    roomRemainingTime.querySelector('span').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+  setInterval(updateTime, 1000);
 }
 
 export function hideRoomInfo() {

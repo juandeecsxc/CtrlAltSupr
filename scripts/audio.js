@@ -46,27 +46,6 @@ const painAudio = document.getElementById('pain-audio');
 keyboardAudio.volume = 0.6;
 painAudio.volume = 1;
 
-function play(audio) {
-  audio.play();
-}
-
-function mute(audio) {
-  audio.muted = true;
-}
-
-function unmute(audio) {
-  audio.muted = false;
-}
-
-function stop(audio) {
-  audio.pause();
-  audio.load();
-}
-
-function setVolume(audio, volume) {
-  audio.volume = volume;
-}
-
 export const audioElements = {
   themeAudio,
   startGameAudio,
@@ -87,10 +66,36 @@ export const audioElements = {
   screamerAudio
 }
 
+function play(audio) {
+  audio.play();
+}
+
+function mute(audio) {
+  audio.muted = true;
+}
+
+function unmute(audio) {
+  audio.muted = false;
+}
+
+function stop(audio) {
+  audio.pause();
+  audio.load();
+}
+
+function stopAll() {
+  Object.values(audioElements).forEach(audio => stop(audio));
+}
+
+function setVolume(audio, volume) {
+  audio.volume = volume;
+}
+
 export const audio = {
   play,
   stop,
   setVolume,
   mute,
-  unmute
+  unmute,
+  stopAll
 }

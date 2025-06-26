@@ -175,6 +175,7 @@ html, body {
 .game-over-container .box {
   background-color: transparent;
   padding: 60px;
+  box-shadow: 0px 0px 20px 5px #c91825;;
 }
 
 #room-info {

@@ -3,6 +3,7 @@ import { protocolStory } from './story.js';
 import { playerStatus, backpackItems, playerDamage } from './player.js';
 import { init as initLabyrinth } from './labyrinth.js';
 import { audioElements, audio } from './audio.js';
+import * as crudy from './crudy.js';
 
 const protocol = document.getElementById('protocol');
 
@@ -28,6 +29,7 @@ export function init(playerStats) {
     updatePlayerStats(player);
     audio.play(protocolAudio);
     showInfoBox();
+    crudy.start(20 * 1000);
     showRoomInfo('Inicio del Protocolo - La Bienvenida de la Corrupción', 'A-101', '22/06/2025', '10:00 AM');
   }, 2000);
 }

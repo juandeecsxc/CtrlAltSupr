@@ -4,6 +4,8 @@ import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
 import { init as initCore } from './core.js';
 
+import { init as initRepair } from './repair.js';
+
 const labyrinth = document.getElementById('labyrinth');
 
 // Doors
@@ -163,7 +165,7 @@ function endLabyrinth() {
   stopAllScreams();
   labyrinth.classList.add('is-hidden');
   hideRoomInfo();
-  initCore(player);
+  initRepair(player);
 }
 
 const isDoorOpen = [false, false, false];
@@ -246,6 +248,6 @@ confirmContinue.addEventListener('click', () => {
       break;
   }
 
-  endLabyrinth()
+  endLabyrinth();
 });
 confirmCancel.addEventListener('click', () => closeModal(confirmModal));
