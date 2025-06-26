@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./assets/css/protocol.css" />
   <link rel="stylesheet" href="./assets/css/labyrinth.css" />
   <link rel="stylesheet" href="./assets/css/repair.css">
+  <link rel="stylesheet" href="./assets/css/logic.css">
 </head>
 
 <body>
@@ -243,6 +244,31 @@
               <div class="modal-content">
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section id="logic" class="hero is-fullheight slow-fade-in is-hidden">
+        <div class="logic-container">
+          <div class="logic-environment"></div>
+          <div class="logic-darkness-overlay"></div>
+          <div class="logic-candle"></div>
+          <div class="logic-symbol" id="logic-symbol1" style="top: 15%; left: 20%;">👁️</div>
+          <div class="logic-symbol" id="logic-symbol2" style="top: 30%; right: 30%;">💀</div>
+          <div class="logic-symbol" id="logic-symbol3" style="bottom: 25%; left: 15%;">🌙</div>
+          <div class="logic-symbol" id="logic-symbol4" style="top: 60%; left: 60%;">⚡</div>
+
+          <div class="logic-door-container">
+            <div class="logic-box">
+              <h7 class="title is-7 mb-2">Clave de acceso:</h7>
+              <input type="text" id="logic-key-input" maxlength="4" class="input is-primary">
+              <br>
+              <button id="logic-confirm-btn" class="logic-button is-primary mt-4">Entrar</button>
+            </div>
+          </div>
+          <div class="logic-instructions-display">
+            <div class="logic-attempts-display" id="logic-attempts">Intentos restantes: 3</div>
+            Mueve el cursor para explorar con la vela<br>
+            La clave es: 👁️, 💀, 🌙, ⚡
           </div>
         </div>
       </section>

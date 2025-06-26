@@ -29,7 +29,7 @@ export function init(playerStats) {
     updatePlayerStats(player);
     audio.play(protocolAudio);
     showInfoBox();
-    crudy.start(20 * 1000);
+    // crudy.start(20 * 1000);
     showRoomInfo('Inicio del Protocolo - La Bienvenida de la Corrupción', 'A-101', '22/06/2025', '10:00 AM');
   }, 2000);
 }

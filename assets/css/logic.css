@@ -1,0 +1,217 @@
+#logic {
+  background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 70%);
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+  user-select: none;
+}
+
+.logic-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.logic-environment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  z-index: 3;
+  pointer-events: none;
+  animation: fogMove 20s infinite linear;
+}
+
+@keyframes fogMove {
+  0% { transform: translateX(-100px) translateY(-100px); }
+  100% { transform: translateX(100px) translateY(100px); }
+}
+
+.logic-darkness-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.logic-candle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #ffdd44 0%, #ff8800 50%, #cc4400 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px #ffdd44,
+    0 0 40px #ff8800,
+    0 0 60px #cc4400;
+  z-index: 15;
+  animation: flicker 2s infinite alternate;
+  pointer-events: none;
+}
+
+.logic-candle::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 20px;
+  background: linear-gradient(to top, #ffdd44, #ff4444);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flame 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.9; transform: scale(1.05); }
+}
+
+@keyframes flame {
+  0% { transform: translateX(-50%) rotate(-2deg); }
+  100% { transform: translateX(-50%) rotate(2deg); }
+}
+
+.logic-symbol {
+  position: absolute;
+  font-size: 3rem;
+  color: #8B0000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 10px #8B0000;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.logic-symbol.revealed {
+  opacity: 1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 10px #8B0000; }
+  50% { text-shadow: 0 0 20px #8B0000, 0 0 30px #FF4500; }
+}
+
+.logic-door-container {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 300px;
+  background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+  border: 3px solid #8B0000;
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px #000;
+  z-index: 5;
+}
+
+.logic-box {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  background: rgba(0,0,0,0.8);
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid #8B0000;
+  text-align: center;
+}
+
+.logic-box input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  background: #1a1a1a;
+  border: 1px solid #8B0000;
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 3px;
+}
+
+.logic-button {
+  background: #8B0000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logic-button:hover {
+  background: #DC143C;
+  box-shadow: 0 0 10px #8B0000;
+}
+
+.logic-button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.logic-attempts-display {
+  color: #8B0000;
+  font-size: 1.2rem;
+}
+
+.logic-jumpscare-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #FF0000 0%, #8B0000 50%, #000 100%);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  animation: jumpscareFlash 0.5s ease-in-out;
+}
+
+@keyframes jumpscareFlash {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.logic-instructions-display {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #666;
+  font-size: 0.9rem;
+  z-index: 15;
+}
+
+@media (max-width: 768px) {
+  .logic-door-container {
+    width: 150px;
+    height: 250px;
+    right: 10px;
+  }
+  
+  .logic-box {
+    width: 120px;
+    padding: 10px;
+  }
+  
+  .logic-symbol {
+    font-size: 2rem;
+  }
+  
+  .logic-candle {
+    width: 30px;
+    height: 30px;
+  }
+} 

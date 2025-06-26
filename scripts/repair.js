@@ -3,7 +3,8 @@ import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { showRoomInfo, hideRoomInfo } from './utils.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
-import { init as initCore } from './core.js';
+// import { init as initCore } from './core.js';
+import { init as initLogic } from './logic.js';
 
 const repair = document.getElementById('repair');
 
@@ -319,7 +320,8 @@ function startGame() {
 function endRepair() {
   // audio.stop(alarmAudio);
   repair.classList.add('is-hidden');
-  initCore(player);
+  // initCore(player);
+  initLogic(player);
   hideRoomInfo();
 }
 
