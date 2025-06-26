@@ -2,6 +2,7 @@ import { showMessage,updatePlayerStats, randomNumber, showRoomInfo } from './uti
 import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
+import { init as initCore } from './core.js';
 
 const labyrinth = document.getElementById('labyrinth');
 
@@ -163,6 +164,7 @@ function endLabyrinth() {
   labyrinth.classList.add('is-hidden');
   updatePlayerStats(player);
   hideRoomInfo();
+  initCore(player);
 }
 
 const isDoorOpen = [false, false, false];
