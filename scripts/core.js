@@ -1,6 +1,7 @@
-import { startTyping, showMessage, updatePlayerStats } from './utils.js';
+import { startTyping, showMessage, updatePlayerStats, showRoomInfo, hideRoomInfo } from './utils.js';
 import { playerStatus } from './player.js';
 import { coreQuestions, coreEndings } from './coreStory.js';
+import { audioElements, audio } from './audio.js';
 
 const core = document.getElementById('core');
 const coreInfoBox = document.getElementById('core-info-box'); 
@@ -9,7 +10,7 @@ const coreContinueButton = document.getElementById('core-continue-button');
 const coreOptionsBox = document.getElementById('core-options-box'); 
 const coreAnswerButtonsContainer = document.getElementById('core-answer-buttons');
 
-const themeAudio = document.getElementById('theme-audio');
+const { themeAudio } = audioElements;
 
 let player = {};
 let currentQuestionIndex = 0;
@@ -21,12 +22,13 @@ export function init(playerStats) {
   player = playerStats;
   currentQuestionIndex = 0;
   score = 0;
-  updatePlayerStats(player);
-  displayQuestion();
-
-  if (themeAudio) {
-    themeAudio.play();
-  }
+  
+  setTimeout(() =>{
+    showRoomInfo('Nivel 5: Juicio del Núcleo', 'C-101', '22/06/2025', '10:00 AM');
+    updatePlayerStats(player);
+    displayQuestion();
+    audio.play(themeAudio);
+  }, 2000)
 }
 
 function displayQuestion() {
@@ -105,7 +107,7 @@ function endCoreLevel() {
   startTyping(`Fin del Juicio. Tu puntuación final es: ${score} de ${coreQuestions.length}. ${endingMessage}`, coreTypewriterText, coreContinueButton, 30);
 
   coreContinueButton.onclick = () => {
-    core.classList.add('is-hidden');
     showMessage("¡Juego Terminado! Gracias por jugar.", 5000);
+    window.location.reload();
   };
 }
