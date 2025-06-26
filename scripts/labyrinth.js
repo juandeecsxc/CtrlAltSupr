@@ -1,16 +1,9 @@
-<<<<<<< dev/marianarestrepo26
 import { showMessage,updatePlayerStats, randomNumber, showRoomInfo, hideRoomInfo } from './utils.js';
 import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
 
 import { init as initRepair } from './repair.js';
-=======
-import { showMessage,updatePlayerStats, randomNumber, showRoomInfo } from './utils.js';
-import { backpackItems, playerDamage, playerStatus } from './player.js';
-import { openModal, closeModal } from './bulma.js';
-import { audioElements, audio } from './audio.js';
->>>>>>> main
 
 const labyrinth = document.getElementById('labyrinth');
 
@@ -172,10 +165,7 @@ function endLabyrinth() {
   labyrinth.classList.add('is-hidden');
   updatePlayerStats(player);
   hideRoomInfo();
-<<<<<<< dev/marianarestrepo26
   initRepair(player);
-=======
->>>>>>> main
 }
 
 const isDoorOpen = [false, false, false];
@@ -258,10 +248,6 @@ confirmContinue.addEventListener('click', () => {
       break;
   }
 
-<<<<<<< dev/marianarestrepo26
   endLabyrinth();
-=======
-  endLabyrinth()
->>>>>>> main
 });
 confirmCancel.addEventListener('click', () => closeModal(confirmModal));
