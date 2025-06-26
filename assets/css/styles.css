@@ -183,4 +183,11 @@ html, body {
   top: 0;
   left: 0;
   z-index: 100;
+  
+}
+#core {
+  background-image: url('../img/Fondo_core.jpg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }

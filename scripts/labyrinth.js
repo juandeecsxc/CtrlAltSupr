@@ -2,6 +2,7 @@ import { showMessage,updatePlayerStats, randomNumber, showRoomInfo, hideRoomInfo
 import { backpackItems, playerDamage, playerStatus } from './player.js';
 import { openModal, closeModal } from './bulma.js';
 import { audioElements, audio } from './audio.js';
+import { init as initCore } from './core.js';
 
 import { init as initRepair } from './repair.js';
 
@@ -163,7 +164,6 @@ function endLabyrinth() {
   audio.stop(doorAudio);
   stopAllScreams();
   labyrinth.classList.add('is-hidden');
-  updatePlayerStats(player);
   hideRoomInfo();
   initRepair(player);
 }
